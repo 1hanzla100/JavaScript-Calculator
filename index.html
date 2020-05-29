@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5b148a8874.js" crossorigin="anonymous"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+        *{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Noto Sans', sans-serif;
+}
+body{
+    background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(http://wallpaperping.com/wp-content/uploads/2018/05/firewatch-night-widescreen-wallpaper.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+h2{
+    font-size: 45px;
+    text-align: center;
+    left: 50%;
+    padding: 10px;
+    border: 0 none;
+    color: white;
+    margin: 20px 0;
+}
+.root{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.keypad{
+    position: relative;
+    margin-top: 20vh;
+}
+button{
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;  
+    border-radius: 50%;
+    border: 0 none;
+    outline: none 0;
+    background: none;  
+    text-align: center;
+    transition: ease-in .35s;
+    color: white;
+}
+button:hover{
+    background-color: rgb(212, 212, 212);
+    color: black;
+    transform: scale(1.1);
+}
+
+tr:last-child > td:last-child{
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;  
+    border-radius: 50%;
+    border: 0 none;
+    outline: none 0;
+    background: none;  
+    text-align: center;
+    transition: ease-in .35s;
+    color: white;
+    background-color: dodgerblue;
+}
+tr:last-child > td:last-child button:hover{
+    background-color: dodgerblue;
+    color: white;
+    transform: scale(1);
+}
+input[type="text"]{
+    width: 100%;
+    height: 14vh;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 0 none;
+    background: none;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    outline: none 0;
+}
+@media all and (max-height: 771px){
+    button{
+        width: 65px;
+        height: 65px;
+    }tr:last-child > td:last-child
+    {
+        width: 65px;
+        height: 65px;
+    }
+    h2{
+        display: none;
+    }
+}
+    </style>
+    <nav>
+        <h2 class="page-header">Calculator</h2>
+    </nav>
+    <div class="root">
+        <input id="entry" type="text" readonly>
+        <div class="keypad">
+        <table>
+            <tr>
+                <td><button type="submit" onclick="clean()">C</button></td>
+                <td><button type="submit" onclick="back()"><i class="fas fa-eraser"></i></button></td>
+                <td><button type="submit" value="" onclick="addNum(3.14)">PI</button></td>
+                <td><button type="submit" value="" onclick="addNum('/')"><i class="fas fa-divide"></i></button></td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="" onclick="addNum(1)">1</button></td>
+                <td><button type="submit" value="" onclick="addNum(2)">2</button></td>
+                <td><button type="submit" value="" onclick="addNum(3)">3</button></td>
+                <td><button type="submit" value="" onclick="addNum('*')"><i class="fas fa-times"></i></button></td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="" onclick="addNum(4)">4</button></td>
+                <td><button type="submit" value="" onclick="addNum(5)">5</button></td>
+                <td><button type="submit" value="" onclick="addNum(6)">6</button></td>
+                <td><button type="submit" value="" onclick="addNum('-')"><i class="fas fa-minus"></i></button></td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="" onclick="addNum(7)">7</button></td>
+                <td><button type="submit" value="" onclick="addNum(8)">8</button></td>
+                <td><button type="submit" value="" onclick="addNum(9)">9</button></td>
+                <td><button type="submit" onclick="addNum('+')"><i class="fas fa-plus"></i></button></td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="" onclick="addNum('.')">.</button></td>
+                <td><button type="submit" value="" onclick="addNum(0)">0</button></td>
+                <td><button type="submit" value="" onclick="addNum('**')">^</button></td>
+                <td><button type="submit" onclick="equal()"><i class="fas fa-equals"></i></button></td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <script>
+        function equal(){
+    var x = document.getElementById("entry").value;
+    if (x){
+        document.getElementById("entry").value = "Ansewer is: " + eval(x);
+    }
+    else{
+        document.getElementById("entry").value = "Enter A Number";
+    }
+}
+function addNum(x){
+    document.getElementById("entry").value += x;
+}
+function clean(){
+    document.getElementById("entry").value = "";
+}
+function back(){
+    var x = document.getElementById("entry").value;
+    document.getElementById("entry").value = x.substring(0, x.length -1);
+}
+    </script>
+</body>
+</html>
